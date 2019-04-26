@@ -14,14 +14,28 @@
             <img class="resize-image" src="{{ restaurant.logo.url }}">
         </div>
         <div class="col-xs-12 col-md-6 col-sm-6 col-lg-4">
+            {% if wishlist %}
             <div class="wishlist-add-wrapper">
+                <span>
+                    <a href="#" onClick="document.getElementById('likebutton').submit()">Like</a><!-- | <a href="#" onClick="document.getElementById('dislikebutton').submit()">Dislike</a>-->
+                </span>
+                <form id="likebutton" method="POST" action="{% url 'addwish' %}/{{ restaurant.id }}">
+                    {% csrf_token %}
+                    <input type="hidden">
+                </form>
+                <form id="dislikebutton" method="POST" action="{% url 'removewish' %}">
+                    {% csrf_token %}
+                    <input type="hidden">
+                </form>
+                <!--
                 <span>
                     <i class="fas fa-heart place-options {{ wishlist }}" data-action="wishlist" data-id="{{ restaurant.id }}" ></i>
                 </span>
                 <span class="right-mobile">
                     <i class="fas fa-thumbs-up place-options {{ vote }}" data-action="vote" data-id="{{ restaurant.id }}"></i>
-                </span>
+                </span>-->
             </div>
+            {% endif %}
             <div class="long-description">
                 {{ restaurant.description }}
             </div>

@@ -24,13 +24,13 @@
     <div class="row wishlist-row-wrap">
         {% for wish in wishlist %}
             <div class="col-md-6 col-sm-6 col-md-6 col-xs-12 wishlist-wrapper">
-                <span class="delete-item-wishlist" data-id="{{ wish.id }}" data-restaurant="{{ wish.name }}" ><i class="far fa-trash-alt"></i></span>
+                <span class="delete-item-wishlist" data-id="{{ wish.id }}" data-restaurant="{{ wish.restaurant.name }}" ><i class="far fa-trash-alt"></i></span>
                 <div class="wishlist-div-outer">
                     <div class="wishlist-restaurant-img">
-                        <img src="{{ wish.logo }}">
+                        <img src="{{ wish.restaurant.logo.url }}">
                     </div>
                     <div class="restaurant-name">
-                        {{ wish.name }}
+                        {{ wish.restaurant.name }}
                     </div>
                 </div>
             </div>

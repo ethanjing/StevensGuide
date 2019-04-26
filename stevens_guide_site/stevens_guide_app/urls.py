@@ -10,6 +10,8 @@ urlpatterns += [
     path('user/', include('django.contrib.auth.urls')),
     path('user/profile/', user_profile, name="profile"),
     path('user/signup/', user_signup, name="signup"),
+    #path('user/addtowishlist/', addwish, name="addwish"),
+    #path('user/addtowishlist/<uuid:rid>/', addwish)
 ]
 
 urlpatterns += [

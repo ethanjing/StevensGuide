@@ -93,3 +93,15 @@ def restaurant_detail(request, rid):
                                                              'enablecomment': enablecomment,
                                                              'userExist': userExist,
                                                              'url': url, })
+
+'''
+def addwish(request, rid):
+    if request.method == 'POST':
+        restaurant = Restaurant.objects.get(id=rid)
+        newwish = Wishlist()
+        newwish.restaurant = restaurant
+        newwish.user = request.user
+        newwish.save()
+
+    return redirect(reverse("restaurantlist"))
+'''
