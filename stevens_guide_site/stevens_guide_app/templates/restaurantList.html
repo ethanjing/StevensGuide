@@ -1,0 +1,38 @@
+{% extends "basic.html" %}
+{% block title %}<title>Restaurants List</title>{% endblock %}
+
+{% block content %}
+<div class="heading-container">
+    <h1>
+        Restaurants List
+    </h1>
+</div>
+<div class="body-container-class">
+    {% for restaurant in restaurants %}
+        <div class="row restaurant-list-wrapper">
+            <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+                <div class="restaurant-img-div">
+                    <a href="{{ restaurant.id }}/">
+                        <img src="{{ restaurant.logo }}" >
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-lg-8 col-xs-12">
+                <div class="restaurant-name">
+                    <a href="{{ restaurant.id }}/">
+                        {{ restaurant.name }}
+                    </a>
+                </div>
+                <div class="address-wrapper">
+                    <span class="restaurant-address-span">Address: </span>
+                    <span class="restaurant-address-text"> {{ restaurant.address }} </span>
+                </div>
+                <div class="restaurant-description">
+                    {{ restaurant.description }}
+                </div>
+            </div>
+        </div>
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}

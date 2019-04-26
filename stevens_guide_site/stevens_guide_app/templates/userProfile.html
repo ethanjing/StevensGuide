@@ -1,0 +1,52 @@
+{% extends "basic.html" %}
+
+{% block title %}<title>My Profile</title>{% endblock %}
+
+{% block content %}
+<div class="heading-container">
+    <h1>
+        My Profile
+    </h1>
+</div>
+<div class="wishlist-label-div"> User Info</div>
+<div class="account-info-wrapper">
+    <div class="form-outer-wrapper">
+        <form method="post" action="{% url 'profile' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Profile</button>
+        </form>
+    </div>
+</div>
+
+<div class="wishlist-label-div"> Your Wishlist</div>
+{% if existwishlist %}
+    <div class="row wishlist-row-wrap">
+        {% for wish in wishlist %}
+            <div class="col-md-6 col-sm-6 col-md-6 col-xs-12 wishlist-wrapper">
+                <span class="delete-item-wishlist" data-id="{{ wish.id }}" data-restaurant="{{ wish.name }}" ><i class="far fa-trash-alt"></i></span>
+                <div class="wishlist-div-outer">
+                    <div class="wishlist-restaurant-img">
+                        <img src="{{ wish.logo }}">
+                    </div>
+                    <div class="restaurant-name">
+                        {{ wish.name }}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="no-wishlist-section">
+        <div class="no-wishlist-exists">
+            Unfortunately you haven't created your wishlist :(
+        </div>
+        <div class="browse-schools-cta">
+            <button class="btn btn-primary" onclick="window.location.href=''">Browse</button>
+        </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "basic.html" %}
+
+{% block content %}
+    <div class="home-index-container">
+        <div class="school-list-wrapper row">
+            <div class="col-xs-12 col-md-6 col-lg-6 col-sm-6 school-info-wrapper">
+                    <div class="school-img-container">
+                        <a href="restaurants/">
+                            {% load static %}
+                            <img src="{% static 'images/stevens.png' %}">
+                        </a>
+                    </div>
+                    <div class="school-description">
+                        <div class="school-title">
+                            <a href="restaurants/">
+                                Stevens Institute of Technology
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
