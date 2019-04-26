@@ -66,8 +66,8 @@ def restaurant_detail(request, rid):
     enablecomment = False
     if request.user.is_authenticated:
         userExist = True
-        uid = request.user.get_profile().id
-        comment = Comment.object.filter(restaurant=rid, user=uid)
+        uid = request.user.userprofile.id
+        comment = Comment.objects.filter(restaurant=rid, user=uid)
         if comment is None:
             enablecomment = True
 
