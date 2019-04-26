@@ -8,12 +8,12 @@ This web application focus on creating a guide of Stevens Institute of Technolog
 
 ## Core Features
 
-* [ ] Signup for normal users and login/logout for both users and admins
-* [ ] View the list of all spots
-* [ ] Edit profile
-* [ ] Display simple description of each spot
-* [ ] Admins can add, update or remove locations/points of interests
-* [ ] Comment
+* [x] Signup for normal users and login/logout for both users and admins
+* [x] View the list of all spots
+* [x] Edit profile
+* [x] Display simple description of each spot
+* [x] Admins can add, update or remove locations/points of interests
+* [x] Comment
 
 ## Extra Features
 
