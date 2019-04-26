@@ -9,22 +9,20 @@ This web application focus on creating a guide of Stevens Institute of Technolog
 ## Core Features
 
 * [ ] Signup for normal users and login/logout for both users and admins
-* [ ] View the list of all ranked spots
+* [ ] View the list of all spots
 * [ ] Edit profile
-* [ ] Display simple description of each spot and also its score
+* [ ] Display simple description of each spot
 * [ ] Admins can add, update or remove locations/points of interests
 * [ ] Comment
-* [ ] Save spots users want
-* [ ] Mark - "Like/Unlike" for any location
-* [ ] Categorize spots into subtypes
 
 ## Extra Features
 
 * [ ] Score spots
 * [ ] Users can upload pictures for spots
 * [ ] More options to sort the spots
-* [ ] More details for spots
-* [ ] Add up-to-date events of spots
+* [ ] Save spots users want
+* [ ] Mark - "Like/Unlike" for any location
+* [ ] Categorize spots into subtypes
 
 ## Author
 
@@ -33,3 +31,15 @@ This web application focus on creating a guide of Stevens Institute of Technolog
 
 ## License
 This software is licensed under the GNU General Public License v3.0 License. For more information, read the file [LICENSE](https://github.com/ethanjing/StevensGuide/blob/master/LICENSE).
+
+## Instructions
+
+* Git clone the repository and Create a virtual environment
+* In the virtual environment, type "pip3 install django"
+* In the virtual environment, type "pip3 install pillow"
+* Under the path /StevensGuide/stevens_guid_site, type "python manage.py runserver"
+* Connect to "http://127.0.0.1:8000/" by web browser
+* By "http://127.0.0.1:8000/admin/" to enter admin web console
+    admin acount:
+    username: jing
+    password: admin123
