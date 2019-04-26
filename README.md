@@ -4,7 +4,7 @@ This is my EE551 python individual project.
 
 ## Introduction
 
-This web application focus on creating a guide of Stevens Institute of Technology which will allow users to get information about landmarks, buildings, restaurants and other spots of Stevens.
+This web application use django to create a guide of Stevens Institute of Technology which will allow users to get information about landmarks, buildings, restaurants and other spots of Stevens.
 
 ## Core Features
 
