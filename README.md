@@ -37,6 +37,7 @@ This software is licensed under the GNU General Public License v3.0 License. For
 * Git clone the repository and Create a virtual environment
 * In the virtual environment, type "pip3 install django"
 * In the virtual environment, type "pip3 install pillow"
+* Under the path /StevensGuide/stevens_guid_site, type "python manage.py migrate"
 * Under the path /StevensGuide/stevens_guid_site, type "python manage.py runserver"
 * Connect to "http://127.0.0.1:8000/" by web browser
 * By "http://127.0.0.1:8000/admin/" to enter admin web console
