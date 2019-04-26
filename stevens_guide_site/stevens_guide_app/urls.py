@@ -8,13 +8,11 @@ urlpatterns = [
 
 urlpatterns += [
     path('user/', include('django.contrib.auth.urls')),
-    #path('user/login/', user_login, name="login"),
-    #path('user/logout/', user_logout, name="logout"),
     path('user/profile/', user_profile, name="profile"),
     path('user/signup/', user_signup, name="signup"),
 ]
 
 urlpatterns += [
-    path('restaurants/', restaurant_list),
-    path('restaurants/<uuid:rid>/', restaurant_detail)
+    path('restaurants/', restaurant_list, name="restaurantlist"),
+    path('restaurants/<uuid:rid>/', restaurant_detail, name="restaurantdetail"),
 ]

@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from .models import Restaurant, Comment
+from .models import Restaurant, Comment, Wishlist
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import login, logout, authenticate
-from .forms import SignUpForm, ProfileForm
+from django.contrib.auth import login
+from .forms import SignUpForm, ProfileForm, CommnetForm
 from django.urls import reverse
 
 
@@ -17,6 +17,11 @@ def index(request):
 @login_required
 def user_profile(request):
     user = request.user
+    wishlist = Wishlist.objects.filter(user=user)
+    if not wishlist:
+        existwishlist = False
+    else:
+        existwishlist = True
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=user)
         if form.is_valid():
@@ -28,7 +33,8 @@ def user_profile(request):
                                     'last_name': user.last_name,
                                     'email': user.email})
 
-    return render(request, "userProfile.html", context={'form': form, 'existwishlist': False, 'userExist': True})
+    return render(request, "userProfile.html", context={'form': form, 'existwishlist': existwishlist,
+                                                        'userExist': True, 'wishlist': wishlist})
 
 
 def user_signup(request):
@@ -59,21 +65,31 @@ def restaurant_list(request):
 
 def restaurant_detail(request, rid):
     userExist = False
+    url = reverse("restaurantdetail", args=[rid])
     try:
-        restaurant_id=Restaurant.objects.get(id=rid)
+        restaurant = Restaurant.objects.get(id=rid)
+        comments = Comment.objects.filter(restaurant=restaurant)
     except Restaurant.DoesNotExist:
         raise Http404("Restaurant does not exist")
+    except Comment.DoesNotExist:
+        comments = None
     enablecomment = False
     if request.user.is_authenticated:
         userExist = True
-        uid = request.user.userprofile.id
-        comment = Comment.objects.filter(restaurant=rid, user=uid)
-        if comment is None:
-            enablecomment = True
+        enablecomment = True
+        if request.method == 'POST':
+            form = CommnetForm(request.POST)
+            if form.is_valid():
+                newcomment = Comment()
+                newcomment.restaurant = restaurant
+                newcomment.user = request.user
+                newcomment.comment = form.cleaned_data['commenttext']
+                newcomment.save()
 
-    restaurant = Restaurant.objects.filter(id=rid)
-    comments = Comment.objects.filter(restaurant=rid)
+                return redirect(reverse("restaurantdetail", args=[rid]))
+
     return render(request, "restaurantDetail.html", context={'restaurant': restaurant,
                                                              'comments': comments,
                                                              'enablecomment': enablecomment,
-                                                             'userExist': userExist})
+                                                             'userExist': userExist,
+                                                             'url': url, })

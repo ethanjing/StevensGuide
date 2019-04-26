@@ -11,9 +11,9 @@
 <div class="body-container-class">
     <div class="row description-page-wrapper">
         <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 restaurant-img-outer">
-            <img class="resize-image" src="{{ restaurant.logo }}">
+            <img class="resize-image" src="{{ restaurant.logo.url }}">
         </div>
-        <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6">
+        <div class="col-xs-12 col-md-6 col-sm-6 col-lg-4">
             <div class="wishlist-add-wrapper">
                 <span>
                     <i class="fas fa-heart place-options {{ wishlist }}" data-action="wishlist" data-id="{{ restaurant.id }}" ></i>
@@ -30,21 +30,25 @@
             <div class="user-comments">
                 <p class="comment-header">Comments:</p>
                 {% for comment in comments %}
-                <div class="user-comment">
-                    <div class="comment-text">"{{ comment.comment }}"</div>
-                    <div class="username-text">- {{ comment.user }}</div>
-                </div>
-                <br>
+                    <div class="user-comment">
+                        <div class="comment-text">"{{ comment.comment }}"</div>
+                        <div class="username-text">- {{ comment.user }}</div>
+                    </div>
+                    <br>
                 {% endfor %}
             </div>
             {% if enablecomment %}
                 <div class="user-review-section">
                     <div class="comment-div-wrapper">
-                        <textarea class="form-control rounded-0 comment-area" placeholder="Enter a comment"  rows="3"></textarea>
-                    </div>
-                    <br>
-                    <div class="comment-submit-wrapper-div">
-                        <button type="submit" class="btn btn-primary comment-submit">Submit</button>
+                        <form method="post" action="{{ url }}">
+                            {% csrf_token %}
+                            <textarea name="commenttext" class="form-control rounded-0 comment-area"
+                                      placeholder="Enter a comment"  rows="3"></textarea>
+                            <br>
+                            <div class="comment-submit-wrapper-div">
+                                <button type="submit" class="btn btn-primary comment-submit">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             {% endif %}

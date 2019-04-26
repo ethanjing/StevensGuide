@@ -16,4 +16,8 @@ class SignUpForm(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email',   )
+        fields = ('username', 'first_name', 'last_name', 'email',)
+
+
+class CommnetForm(forms.Form):
+    commenttext = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}))
