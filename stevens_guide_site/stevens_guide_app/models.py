@@ -12,9 +12,6 @@ class UserProfile(models.Model):
         return "Id as Primary Key"
 
 
-
-
-
 class Restaurant(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=30)
